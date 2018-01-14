@@ -16,6 +16,8 @@ import { DataTableModule, SharedModule, ButtonModule } from 'primeng/primeng';
 import { routingModule, appRoutingProviders } from './routes/routes';
 
 import { Ng5BreadcrumbModule } from './components/breadcrumb/breadcrumb.module';
+import { HomeScreenComponent } from './components/home/home-screen.component';
+
 
 import { books } from './common/stores/books.store';
 import { selectedBook } from './common/stores/selectedBook.store';
@@ -25,7 +27,8 @@ import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeScreenComponent
   ],
   imports: [
     BrowserModule,

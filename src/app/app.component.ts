@@ -12,6 +12,7 @@ export class AppComponent {
     breadcrumbService.addFriendlyNameForRoute( '/home', 'Home');
     breadcrumbService.addFriendlyNameForRoute( '/home/books', 'Books' );
 
-    breadcrumbService.hideRouteRegex('^/home/books/detail/\\d+$');
+    // breadcrumbService.hideRouteRegex('^/home/books/detail/\\d+$');
+    // breadcrumbService.hideRouteRegex('^/home/dir1/dir2/dir3$');
   }
 }

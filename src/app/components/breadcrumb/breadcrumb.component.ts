@@ -7,7 +7,7 @@ import { BreadcrumbService } from './breadcrumb.service';
  * It subscribes to the router in order to update the breadcrumb trail as you navigate to a component.
  */
 @Component({
-    selector: 'app-breadcrumb',
+    selector: 'app-bread-crumb',
     template: `
         <ul [class.breadcrumb]="useBootstrap">
             <li *ngFor="let url of _urls; let last = last" [ngClass]="{'breadcrumb-item': useBootstrap, 'active': last}"> <!-- disable link of last item -->

@@ -15,6 +15,6 @@ export class HomeService {
 
     loadHome(): void {
         const payload: HomeScreen = { homeScreenName: 'home'};
-        this.store.dispatch({ type: 'UPDATE_HOME', payload })
+        this.store.dispatch({ type: 'UPDATE_HOME', payload });
     }
 }

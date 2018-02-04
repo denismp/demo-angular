@@ -45,9 +45,13 @@ export class BooksComponent implements OnInit {
         const emptyItem: Book = {
             id: null,
             title: '',
-            authorId: null,
-            authorName: '',
-            publishDate: null
+            author: null,
+            user: null,
+            publishDate: null,
+            createdBy: '',
+            createdDate: null,
+            updatedBy: '',
+            updatedDate: null
         };
 
         this.store.dispatch({ type: 'SELECT_BOOK', payload: emptyItem });

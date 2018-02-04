@@ -23,9 +23,13 @@ export class BooksListComponent {
     selectedBook: Book = {
         id: null,
         title: '',
-        authorId: null,
-        authorName: '',
-        publishDate: null
+        author: null,
+        user: null,
+        publishDate: null,
+        createdBy: '',
+        createdDate: null,
+        updatedBy: '',
+        updatedDate: null
     };
 
     @Input() set book(value: Book) {
@@ -44,14 +48,14 @@ export class BooksListComponent {
     ) {
         this.observableBooks = store.select(state => state.books);
         this.selectedObservableBook = store.select(state => state.selectedBook);
-        this.observableBooks.subscribe( v => console.log(v));
-        this.selectedObservableBook.subscribe( v => console.log(v));
+        this.observableBooks.subscribe(v => console.log(v));
+        this.selectedObservableBook.subscribe(v => console.log(v));
     }
 
-    routeToBook( book: Book ): void {
+    routeToBook(book: Book): void {
         this.selectedBook = book;
         console.log('routeToObservation(): called...');
-        this.store.dispatch({ type: 'SELECT_BOOK', payload: this.selectedBook});
+        this.store.dispatch({ type: 'SELECT_BOOK', payload: this.selectedBook });
         this.router.navigate(['/home/books/detail']);
     }
 }

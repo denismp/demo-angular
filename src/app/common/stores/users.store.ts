@@ -1,15 +1,15 @@
-// export const books = (state: any = [], { type, payload }) => {
-export function books(state: any[] = [], { type, payload }) {
+// export const users = (state: any = [], { type, payload }) => {
+export function users(state: any[] = [], { type, payload }) {
     switch (type) {
-        case 'ADD_BOOKS':
+        case 'ADD_USERS':
             return payload;
-        case 'CREATE_BOOK':
+        case 'CREATE_USER':
             return [...state, payload];
-        case 'UPDATE_BOOK':
+        case 'UPDATE_USER':
             return state.map(item => {
                 return item.id === payload.id ? Object.assign({}, item, payload) : item;
             });
-        case 'DELETE_BOOK':
+        case 'DELETE_USER':
             return state.filter(item => {
                 return item.id !== payload.id;
             });

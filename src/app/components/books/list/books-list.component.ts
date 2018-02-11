@@ -11,7 +11,7 @@ import { AppStore } from '../../../common/models/appstore.model';
 import { Store } from '@ngrx/store';
 
 @Component({
-    selector: 'app-book-list',
+    selector: 'app-books-list',
     templateUrl: './books-list.component.html'
 })
 export class BooksListComponent {

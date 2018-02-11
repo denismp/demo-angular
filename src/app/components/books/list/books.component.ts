@@ -9,7 +9,7 @@ import { BooksService } from '../../../common/services/books.service';
 @Component({
     selector: 'app-books',
     template: `
-    <div> class='app-books'>
+    <div class='app-books'>
         <app-books-list [books]="booksObservable | async"
         (selected)="selectBook($event)" (deleted)="deleteBook($event)">
         </app-books-list>

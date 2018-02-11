@@ -21,6 +21,9 @@ import { HomeScreenComponent } from './components/home/home-screen.component';
 
 import { books } from './common/stores/books.store';
 import { selectedBook } from './common/stores/selectedBook.store';
+import { BooksComponent } from './components/books/list/books.component';
+import { BooksListComponent } from './components/books/list/books-list.component';
+import { BookDetailComponent } from './components/books/detail/book-detail.component';
 
 import { AppComponent } from './app.component';
 
@@ -28,7 +31,10 @@ import { AppComponent } from './app.component';
 @NgModule({
   declarations: [
     AppComponent,
-    HomeScreenComponent
+    HomeScreenComponent,
+    BooksComponent,
+    BooksListComponent,
+    BookDetailComponent
   ],
   imports: [
     BrowserModule,

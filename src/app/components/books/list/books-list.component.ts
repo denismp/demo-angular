@@ -23,7 +23,7 @@ export class BooksListComponent {
     selectedBook: Book = {
         id: null,
         title: '',
-        author: null,
+        authors: null,
         user: null,
         publishDate: null,
         createdBy: '',

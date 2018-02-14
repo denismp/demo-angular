@@ -4,7 +4,7 @@ import { User } from './user.model';
 export interface Book {
     id: number;
     title: string;
-    author: Author;
+    authors: Array<Author>;
     user: User;
     publishDate: Date;
     createdBy: string;

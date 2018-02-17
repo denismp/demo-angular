@@ -6,7 +6,7 @@ import { Author } from './author.model';
 import { User } from './user.model';
 
 export interface AppStore {
-  home: HomeScreen;
+  selectedHome: HomeScreen;
   books: Book[];
   selectedBook: Book;
   authors: Author[];

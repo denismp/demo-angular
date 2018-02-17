@@ -1,5 +1,5 @@
 // export const authors = (state: any = [], { type, payload }) => {
-export function authors(state: any[] = [], { type, payload }) {
+export function authors(state: any = [], { type, payload }) {
     switch (type) {
         case 'ADD_AUTHORS':
             return payload;

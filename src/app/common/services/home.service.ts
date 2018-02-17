@@ -10,7 +10,7 @@ export class HomeService {
     home: Observable<HomeScreen>;
 
     constructor( private store: Store<AppStore> ) {
-        this.home = store.select( state => state.home );
+        this.home = store.select( state => state.selectedHome );
     }
 
     loadHome(): void {

@@ -18,7 +18,7 @@ export class HomeScreenComponent implements OnInit {
         private store: Store<AppStore>,
         private homeService: HomeService
     ) {
-        this.home = store.select(state => state.home);
+        this.home = store.select(state => state.selectedHome);
         this.home.subscribe(v => console.log(v));
 
     }

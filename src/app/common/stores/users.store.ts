@@ -1,5 +1,5 @@
 // export const users = (state: any = [], { type, payload }) => {
-export function users(state: any[] = [], { type, payload }) {
+export function users(state: any = [], { type, payload }) {
     switch (type) {
         case 'ADD_USERS':
             return payload;

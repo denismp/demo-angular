@@ -2,7 +2,7 @@ import { Book } from './book.model';
 export interface User {
     id: number;
     email: string;
-    name: number;
+    name: string;
     books: Array<Book>;
     createdBy: string;
     createdDate: Date;

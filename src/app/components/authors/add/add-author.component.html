@@ -1,5 +1,5 @@
 <div class="container">
-    <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="authorForm" (ngSubmit)="onSubmit()">
         <!-- <div class="row">
             <div class="col-md-12">
                 <div class="form-group">
@@ -11,7 +11,7 @@
             <div class="col-md-12">
                 <div class="form-group">
                     <label for="">Title</label>
-                    <input type="text" class="form-control" value="{{selectedAuthor.title}}" formControlName="name">
+                    <input type="text" class="form-control" value="{{selectedAuthor.name}}" formControlName="name">
                 </div>
             </div>
         </div>

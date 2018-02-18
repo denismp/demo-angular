@@ -47,6 +47,6 @@ export class AuthorDetailComponent implements OnInit {
     addAuthor( event: any ): void {
         console.log('addAuthor(): called...');
         this.store.dispatch({ type: 'ADD_AUTHORS', payload: this.selectedAuthor });
-        this.router.navigate(['/home/author/detail/add']);
+        this.router.navigate(['/home/authors/detail/add']);
     }
 }

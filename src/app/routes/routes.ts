@@ -21,8 +21,9 @@ export const routes = [
     { path: 'home/books/detail', component: BookDetailComponent },
     { path: 'home/book/detail/add', component: AddUserComponent },
     { path: 'home/authors', component: AuthorsComponent },
+    { path: 'home/authors/add', component: AddAuthorComponent },
     { path: 'home/authors/detail', component: AuthorDetailComponent },
-    { path: 'home/author/detail/add', component: AddAuthorComponent },
+    { path: 'home/authors/detail/add', component: AddAuthorComponent },
     { path: 'home/users', component: UsersComponent },
     { path: 'home/users/detail', component: UserDetailComponent },
     { path: 'home/user/detail/add', component: AddUserComponent }

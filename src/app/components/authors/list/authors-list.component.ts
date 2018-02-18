@@ -56,4 +56,8 @@ export class AuthorsListComponent {
         this.store.dispatch({ type: 'SELECT_BOOK', payload: this.selectedAuthor });
         this.router.navigate(['/home/authors/detail']);
     }
+
+    addAuthor(event: any): void {
+        this.router.navigate(['/home/authors/add']);
+    }
 }

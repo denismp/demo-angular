@@ -42,6 +42,7 @@ export class AddAuthorComponent implements OnInit {
 
     constructor(
         private authorsService: AuthorsService,
+        private booksService: BooksService,
         private store: Store<AppStore>,
         private router: Router,
         private activatedRouter: ActivatedRoute,
@@ -60,6 +61,8 @@ export class AddAuthorComponent implements OnInit {
         console.log('onSubmit(): called...');
 
         this.getFormData();
+        this.store.dispatch({type: 'CREATE_AUTHOR', payload: this.selectedAuthor});
+        this.location.back();
     }
 
     onCancel(): void {
@@ -70,8 +73,8 @@ export class AddAuthorComponent implements OnInit {
 
     getFormData(): void {
         this.selectedAuthor.name = this.authorForm.get('name').value;
-        this.store.dispatch({ type: 'ADD_AUTHOR', payload: this.selectedAuthor });
-        this.getAuthor();
+        this.store.dispatch({ type: 'SELECT_AUTHOR', payload: this.selectedAuthor });
+        // this.getAuthor();
     }
 
     getAuthor(): void {

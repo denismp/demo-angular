@@ -53,7 +53,7 @@ export class AuthorsListComponent {
     routeToAuthor(author: Author): void {
         this.selectedAuthor = author;
         console.log('routeToObservation(): called...');
-        this.store.dispatch({ type: 'SELECT_BOOK', payload: this.selectedAuthor });
+        this.store.dispatch({ type: 'SELECT_AUTHOR', payload: this.selectedAuthor });
         this.router.navigate(['/home/authors/detail']);
     }
 

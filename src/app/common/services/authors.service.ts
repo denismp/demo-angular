@@ -37,7 +37,7 @@ export class AuthorsService {
     }
 
     updateAuthor(author: Author) {
-        this.http.put(`${BASE_SINGLE_URL}`, JSON.stringify(author))
+        this.http.put(`${BASE_SINGLE_URL}`, JSON.stringify(author)), httpOptions
             .pipe(
                 map(payload => ({ type: 'UPDATE_AUTHOR', payload }))
             )
@@ -47,11 +47,13 @@ export class AuthorsService {
     createAuthor(author: Author) {
         console.log(`${BASE_CREATE_URL}`);
         console.log("author=" + JSON.stringify(author));
-        this.http.post(`${BASE_CREATE_URL}`, JSON.stringify(author))
+        this.http.post(`${BASE_CREATE_URL}`, JSON.stringify(author),httpOptions)
             .pipe(map(payload => ({ type: 'CREATE_AUTHOR', payload })))
-            .subscribe(action => {
-                this.store.dispatch(action);
-            });
+            .subscribe(action => 
+                this.store.dispatch(action),
+                err => console.error(err),
+                () => { console.log('createAuthor(): completed');}
+            );
     }
 
     deleteAuthor(author: Author) {
@@ -59,9 +61,9 @@ export class AuthorsService {
             .pipe(
                 map(payload => ({ type: 'DELETE_AUTHOR', payload }))
             )
-            .subscribe(action => {
-                this.store.dispatch(action);
-            });
+            .subscribe(action => 
+                this.store.dispatch(action)
+            );
     }
 
 }

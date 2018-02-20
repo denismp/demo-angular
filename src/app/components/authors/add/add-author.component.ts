@@ -61,7 +61,8 @@ export class AddAuthorComponent implements OnInit {
         console.log('onSubmit(): called...');
 
         this.getFormData();
-        this.store.dispatch({type: 'CREATE_AUTHOR', payload: this.selectedAuthor});
+        this.authorsService.createAuthor(this.selectedAuthor);
+        // this.store.dispatch({type: 'CREATE_AUTHOR', payload: this.selectedAuthor});
         this.location.back();
     }
 

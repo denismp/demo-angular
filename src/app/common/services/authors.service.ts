@@ -49,11 +49,11 @@ export class AuthorsService {
         console.log("author=" + JSON.stringify(author));
         this.http.post(`${BASE_CREATE_URL}`, JSON.stringify(author),httpOptions)
             .pipe(map(payload => ({ type: 'CREATE_AUTHOR', payload })))
-            .subscribe(action => 
+            .subscribe(action => {
                 this.store.dispatch(action),
                 err => console.error(err),
                 () => { console.log('createAuthor(): completed');}
-            );
+            });
     }
 
     deleteAuthor(author: Author) {

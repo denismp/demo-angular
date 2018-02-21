@@ -47,12 +47,12 @@ export class AuthorsService {
     createAuthor(author: Author) {
         console.log(`${BASE_CREATE_URL}`);
         console.log("author=" + JSON.stringify(author));
-        this.http.post(`${BASE_CREATE_URL}`, JSON.stringify(author),httpOptions)
+        this.http.post(`${BASE_CREATE_URL}`, JSON.stringify(author), httpOptions)
             .pipe(map(payload => ({ type: 'CREATE_AUTHOR', payload })))
             .subscribe(action => {
                 this.store.dispatch(action),
-                err => console.error(err),
-                () => { console.log('createAuthor(): completed');}
+                    err => console.error(err),
+                    () => { console.log('createAuthor(): completed'); }
             });
     }
 
@@ -61,7 +61,7 @@ export class AuthorsService {
             .pipe(
                 map(payload => ({ type: 'DELETE_AUTHOR', payload }))
             )
-            .subscribe(action => 
+            .subscribe(action =>
                 this.store.dispatch(action)
             );
     }

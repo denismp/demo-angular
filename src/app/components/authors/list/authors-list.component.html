@@ -16,9 +16,20 @@
                     </span>
                 </ng-template>
             </p-column>
+
+            <ng-template let-author pTemplate="rowexpansion">
+                <div class="ui-g">
+                    <div class="uig-12 ui-md-6"><b>Record created date: </b>{{author.createdDate | date}}</div>
+                    <div class="uig-12 ui-md-6"><b>Record created by: </b>{{author.createdBy}}</div>
+                    <div class="uig-12 ui-md-6"><b>Record last updated: </b>{{author.updatedDate | date}}</div>
+                    <div class="uig-12 ui-md-6"><b>Record last updated by: </b>{{author.updatedBy}}</div>                   
+                </div>
+            </ng-template>
+
         </p-dataTable>
         <div class="row">
-            <button type="button" class="btn btn-primary btn-sm pull-right" style="margin-right:0px; margin-top:5px; margin-bottom:5px" (click)="addAuthor()">Add Author</button>
+            <button type="button" class="btn btn-primary btn-sm pull-right" style="margin-right:0px; margin-top:5px; margin-bottom:5px"
+                (click)="addAuthor()">Add Author</button>
         </div>
     </div>
 </div>

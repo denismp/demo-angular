@@ -29,6 +29,7 @@ import { selectedUser } from './common/stores/selectedUser.store';
 import { BooksComponent } from './components/books/list/books.component';
 import { BooksListComponent } from './components/books/list/books-list.component';
 import { BookDetailComponent } from './components/books/detail/book-detail.component';
+import { AddBookComponent } from './components/books/add/add-book.component';
 import { AuthorsListComponent } from './components/authors/list/authors-list.component';
 import { AuthorsComponent } from './components/authors/list/authors.component';
 import { AuthorDetailComponent } from './components/authors/detail/author-detail.component';
@@ -56,7 +57,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     UsersListComponent,
     UserDetailComponent,
     AddUserComponent,
-    AddAuthorComponent
+    AddAuthorComponent,
+    AddBookComponent
   ],
   imports: [
     BrowserModule,

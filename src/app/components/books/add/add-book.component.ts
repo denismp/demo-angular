@@ -19,6 +19,7 @@ import { Author } from '../../../common/models/author.model';
 export class AddBookComponent implements OnInit {
     selectedTargetAuthors: Author[];
     selectedSourceAuthors: Author[];
+    authorName: string;
     bookForm: FormGroup;
     selectedBook: Book = {
         id: null,
@@ -57,6 +58,7 @@ export class AddBookComponent implements OnInit {
     ngOnInit(): void {
         this.bookForm = new FormGroup({
             'title': new FormControl(this.selectedBook.title, Validators.required),
+            'authorName': new FormControl(this.authorName, Validators.required),
             'publishDate': new FormControl(this.selectedBook.publishDate, Validators.required)
         });
     }
@@ -65,6 +67,9 @@ export class AddBookComponent implements OnInit {
         console.log('onSubmit(): called...');
 
         this.getFormData();
+        this.booksService.createBook(this.authorName, this.selectedBook);
+        // this.store.dispatch({type: 'CREATE_AUTHOR', payload: this.selectedAuthor});
+        this.location.back();
     }
 
     onCancel(): void {
@@ -75,8 +80,9 @@ export class AddBookComponent implements OnInit {
 
     getFormData(): void {
         this.selectedBook.title = this.bookForm.get('title').value;
+        this.authorName = this.bookForm.get('authorName').value;
         this.selectedBook.publishDate = this.bookForm.get('publishDate').value;
-        this.store.dispatch({ type: 'ADD_BOOK', payload: this.selectedBook });
+        this.store.dispatch({ type: 'SELECT_BOOK', payload: this.selectedBook });
         this.getBook();
     }
 

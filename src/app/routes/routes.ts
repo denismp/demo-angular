@@ -18,6 +18,7 @@ export const routes = [
     // { path: '', redirectTo: '/home', pathMatch: 'full'},
     { path: 'home', component: HomeScreenComponent },
     { path: 'home/books', component: BooksComponent },
+    { path: 'home/books/add', component: AddBookComponent },
     { path: 'home/books/detail', component: BookDetailComponent },
     { path: 'home/book/detail/add', component: AddUserComponent },
     { path: 'home/authors', component: AuthorsComponent },

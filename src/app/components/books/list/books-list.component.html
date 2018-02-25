@@ -1,7 +1,10 @@
 <div class="row">
     <div class="col-md-12">
-        <p-dataTable [value]="books" [rows]="10" expandableRows="true" [paginator]="true" [responsive]="true" selectionMode="single" [(selection)]="selectedBook">
-            <p-header><b>Books</b></p-header>
+        <p-dataTable [value]="books" [rows]="10" expandableRows="true" [paginator]="true" [responsive]="true" selectionMode="single"
+            [(selection)]="selectedBook">
+            <p-header>
+                <b>Books</b>
+            </p-header>
             <p-column expander="true" styleClass="col-icon" [style]="{'width': '30px'}"></p-column>
             <p-column field="id" header="ID" [sortable]="true"></p-column>
             <p-column field="publishDate" header="Publish Date" [sortable]="true" [style]="{'width': '100px'}">
@@ -14,15 +17,22 @@
             <p-column field="authorId" header="Author ID" [sortable]="true"></p-column>
             <ng-template let-author pTemplate="rowexpansion">
                 <div class="ui-g">
-                    <div class="uig-12 ui-md-6"><b>Author Name: </b>{{ authorName }}</div>
+                    <div class="uig-12 ui-md-6">
+                        <b>Author Name: </b>{{ authorName }}</div>
                 </div>
             </ng-template>
             <p-column field="books" header="Actions" [sortable]="false" [filter]="false" [style]="{'width': '100px'}">
                 <ng-template let-row="rowData" pTemplate type="body">
-                    <span class="fa fa-search fa-15" (click)="routerToBook(row)"><span class="sr-only">View</span></span>
+                    <span class="fa fa-search fa-15" (click)="routerToBook(row)">
+                        <span class="sr-only">View</span>
+                    </span>
                 </ng-template>
             </p-column>
         </p-dataTable>
+        <div class="row">
+            <button type="button" class="btn btn-primary btn-sm pull-right" style="margin-right:0px; margin-top:5px; margin-bottom:5px"
+                (click)="addBook()">Add Book</button>
+        </div>
     </div>
 </div>
 <!-- 

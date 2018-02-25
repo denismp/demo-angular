@@ -11,6 +11,7 @@ export class AppComponent {
   constructor(private breadcrumbService: BreadcrumbService) {
     breadcrumbService.addFriendlyNameForRoute('/home', 'Home');
     breadcrumbService.addFriendlyNameForRoute('/home/books', 'Books');
+    breadcrumbService.addFriendlyNameForRoute('/home/books/add', 'Add Book');
     breadcrumbService.addFriendlyNameForRoute('/home/books/detail', 'Book');
     breadcrumbService.addFriendlyNameForRoute('/home/book/detail/add', 'Add Book');
     breadcrumbService.addFriendlyNameForRoute('/home/authors', 'Authors');

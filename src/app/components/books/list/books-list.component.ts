@@ -58,4 +58,8 @@ export class BooksListComponent {
         this.store.dispatch({ type: 'SELECT_BOOK', payload: this.selectedBook });
         this.router.navigate(['/home/books/detail']);
     }
+
+    addBook(event: any): void {
+        this.router.navigate(['/home/books/add']);
+    }
 }

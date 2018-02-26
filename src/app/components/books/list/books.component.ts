@@ -3,6 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 import { AppStore } from '../../../common/models/appstore.model';
 import { Book } from '../../../common/models/book.model';
+import { User } from '../../../common/models/user.model';
 import { BooksService } from '../../../common/services/books.service';
 
 
@@ -20,6 +21,18 @@ import { BooksService } from '../../../common/services/books.service';
 export class BooksComponent implements OnInit {
     title = 'Demo';
     booksObservable: Observable<Array<Book>>;
+
+    emptyUser: User = {
+        id: null,
+        email: '',
+        name: '',
+        books: null,
+        createdBy: '',
+        createdDate: null,
+        updatedBy: '',
+        updatedDate: null
+    };
+
     constructor(
         private store: Store<AppStore>,
         private booksService: BooksService
@@ -46,7 +59,7 @@ export class BooksComponent implements OnInit {
             id: null,
             title: '',
             authors: null,
-            user: null,
+            user: this.emptyUser,
             publishDate: null,
             createdBy: '',
             createdDate: null,
@@ -58,6 +71,9 @@ export class BooksComponent implements OnInit {
     }
 
     selectBook( item: Book ) {
+        if( item.user === undefined || item.user === null ) {
+            item.user = this.emptyUser;
+        }
         this.store.dispatch({ type: 'SELECT_BOOK', payload: item });
     }
 

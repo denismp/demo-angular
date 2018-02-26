@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
 import { Book } from '../../../common/models/book.model';
+import { User } from '../../../common/models/user.model';
 
 import { BooksService } from '../../../common/services/books.service';
 
@@ -20,11 +21,21 @@ export class BooksListComponent {
     @Output() deleted = new EventEmitter();
 
     originalId: number;
+    emptyUser: User = {
+        id: null,
+        email: '',
+        name: '',
+        books: null,
+        createdBy: '',
+        createdDate: null,
+        updatedBy: '',
+        updatedDate: null
+    };
     selectedBook: Book = {
         id: null,
         title: '',
         authors: null,
-        user: null,
+        user: this.emptyUser,
         publishDate: null,
         createdBy: '',
         createdDate: null,
@@ -35,6 +46,9 @@ export class BooksListComponent {
     @Input() set book(value: Book) {
         if (value) {
             this.originalId = value.id;
+        }
+        if( value.user === undefined || value.user === null ) {
+            value.user = this.emptyUser;
         }
         this.selectedBook = Object.assign({}, value);
     }
@@ -61,5 +75,13 @@ export class BooksListComponent {
 
     addBook(event: any): void {
         this.router.navigate(['/home/books/add']);
+    }
+
+    onRowExpand(event: any): void {
+        this.selectedBook = event.data;
+        if( this.selectedBook.user === undefined || this.selectedBook.user === null ) {
+            this.selectedBook.user = this.emptyUser;
+        }
+        console.log('onRowExpand(): called...');
     }
 }

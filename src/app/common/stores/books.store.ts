@@ -4,6 +4,9 @@ export function books(state: any = [], { type, payload }) {
         case 'ADD_BOOKS':
             return payload;
         case 'CREATE_BOOK':
+            if( state === null ) {
+                state = [];
+            }
             return [...state, payload];
         case 'UPDATE_BOOK':
             return state.map(item => {

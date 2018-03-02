@@ -4,6 +4,9 @@ export function users(state: any = [], { type, payload }) {
         case 'ADD_USERS':
             return payload;
         case 'CREATE_USER':
+            if( state === null ) {
+                state = [];
+            }
             return [...state, payload];
         case 'UPDATE_USER':
             return state.map(item => {

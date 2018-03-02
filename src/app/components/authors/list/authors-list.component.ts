@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
@@ -14,8 +14,9 @@ import { Store } from '@ngrx/store';
     selector: 'app-authors-list',
     templateUrl: './authors-list.component.html'
 })
-export class AuthorsListComponent {
+export class AuthorsListComponent implements OnInit {
     @Input() authors: Author[];
+    // @Input() addedAuthor: Author;
     @Output() selected = new EventEmitter();
     @Output() deleted = new EventEmitter();
 
@@ -48,6 +49,10 @@ export class AuthorsListComponent {
         this.selectedObservableAuthor = store.select(state => state.selectedAuthor);
         this.observableAuthors.subscribe(v => console.log(v));
         this.selectedObservableAuthor.subscribe(v => console.log(v));
+    }
+
+    ngOnInit(): void {
+
     }
 
     routeToAuthor(author: Author): void {

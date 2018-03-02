@@ -38,6 +38,7 @@ export class AuthorsComponent implements OnInit {
         if (load === true) {
             this.authorsService.loadAuthors();
         }
+        // this.authorsService.loadAuthors();
     }
 
     resetAuthor() {

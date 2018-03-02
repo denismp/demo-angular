@@ -4,6 +4,9 @@ export function authors(state: any = [], { type, payload }) {
         case 'ADD_AUTHORS':
             return payload;
         case 'CREATE_AUTHOR':
+            if( state === null ) {
+                state = [];
+            }
             return [...state, payload];
         case 'UPDATE_AUTHOR':
             return state.map(item => {

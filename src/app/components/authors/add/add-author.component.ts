@@ -4,7 +4,7 @@ import 'rxjs/add/operator/switchMap';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 import { AppStore } from '../../../common/models/appstore.model';
-import { Component, Input, OnInit, Output, EventEmitter, OnDestroy} from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router, Params } from '@angular/router';
 import { Location } from '@angular/common';
 import { Book } from '../../../common/models/book.model';
@@ -92,7 +92,7 @@ export class AddAuthorComponent implements OnInit, OnDestroy {
         this.store.select('selectedAuthor')
             .subscribe(data => {
                 temp = data;
-                if (temp !== undefined) {
+                if (temp !== undefined && temp !== null) {
                     this.selectedAuthor = data;
                 }
             });

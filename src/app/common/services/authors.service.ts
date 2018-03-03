@@ -30,9 +30,9 @@ export class AuthorsService {
                 map(payload => ({ type: 'ADD_AUTHORS', payload }))
             )
             .subscribe(action => this.store.dispatch(action),
-            err => console.error(err),
-            () => { console.log('loadAuthors(): completed.')}
-        );
+                err => console.error(err),
+                () => { console.log('loadAuthors(): completed.'); }
+            );
     }
 
     getAuthor(id: number) {
@@ -44,10 +44,10 @@ export class AuthorsService {
             .pipe(
                 map(payload => ({ type: 'UPDATE_AUTHOR', payload }))
             )
-            .subscribe(action => 
+            .subscribe(action =>
                 this.store.dispatch(action),
                 err => console.error(err),
-                () => { console.log('updateAuthor(): completed')}
+                () => { console.log('updateAuthor(): completed'); }
             );
     }
 
@@ -58,8 +58,8 @@ export class AuthorsService {
             .pipe(map(payload => ({ type: 'CREATE_AUTHOR', payload })))
             .subscribe(action =>
                 this.store.dispatch(action),
-                    err => console.error(err),
-                    () => { console.log('createAuthor(): completed'); }
+                err => console.error(err),
+                () => { console.log('createAuthor(): completed'); }
             );
     }
 

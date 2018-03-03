@@ -91,7 +91,7 @@ export class AddBookComponent implements OnInit {
         this.store.select('selectedBook')
             .subscribe(data => {
                 temp = data;
-                if (temp !== undefined) {
+                if (temp !== undefined && temp !== null) {
                     this.selectedBook = data;
                 }
             });

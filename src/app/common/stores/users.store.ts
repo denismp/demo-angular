@@ -4,7 +4,7 @@ export function users(state: any = [], { type, payload }) {
         case 'ADD_USERS':
             return payload;
         case 'CREATE_USER':
-            if( state === null ) {
+            if ( state === null ) {
                 state = [];
             }
             return [...state, payload];

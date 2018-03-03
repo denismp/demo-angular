@@ -4,7 +4,7 @@ export function authors(state: any = [], { type, payload }) {
         case 'ADD_AUTHORS':
             return payload;
         case 'CREATE_AUTHOR':
-            if( state === null ) {
+            if ( state === null ) {
                 state = [];
             }
             return [...state, payload];

@@ -47,7 +47,7 @@ export class BooksListComponent {
         if (value) {
             this.originalId = value.id;
         }
-        if( value.user === undefined || value.user === null ) {
+        if ( value.user === undefined || value.user === null ) {
             value.user = this.emptyUser;
         }
         this.selectedBook = Object.assign({}, value);
@@ -79,7 +79,7 @@ export class BooksListComponent {
 
     onRowExpand(event: any): void {
         this.selectedBook = event.data;
-        if( this.selectedBook.user === undefined || this.selectedBook.user === null ) {
+        if ( this.selectedBook.user === undefined || this.selectedBook.user === null ) {
             this.selectedBook.user = this.emptyUser;
         }
         console.log('onRowExpand(): called...');

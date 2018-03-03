@@ -71,7 +71,7 @@ export class BooksComponent implements OnInit {
     }
 
     selectBook( item: Book ) {
-        if( item.user === undefined || item.user === null ) {
+        if ( item.user === undefined || item.user === null ) {
             item.user = this.emptyUser;
         }
         this.store.dispatch({ type: 'SELECT_BOOK', payload: item });

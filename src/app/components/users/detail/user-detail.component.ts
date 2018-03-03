@@ -47,7 +47,7 @@ export class UserDetailComponent implements OnInit {
 
     addUser( event: any ): void {
         console.log('addUser(): called...');
-        this.store.dispatch({ type: 'ADD_USERS', payload: this.selectedUser });
+        this.store.dispatch({ type: 'SELECT_USER', payload: this.selectedUser });
         this.router.navigate(['/home/user/detail/add']);
     }
 }

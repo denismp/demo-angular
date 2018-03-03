@@ -1,5 +1,5 @@
 <div class="container">
-    <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
         <!-- <div class="row">
             <div class="col-md-12">
                 <div class="form-group">
@@ -10,13 +10,21 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group">
-                    <label for="">Title</label>
-                    <input type="text" class="form-control" value="{{selectedAuthor.title}}" formControlName="name">
+                    <label for="">Name</label>
+                    <input type="text" class="form-control" value="{{selectedUser.name}}" formControlName="name">
                 </div>
             </div>
         </div>
         <div class="row">
-            <button type="submit" class="btn btn-primary btn-sm pull-left" style="margin-left:15px; margin-right:15px; margin-top:5px; margin-bottom:5px">Save Author</button>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="">Email</label>
+                    <input type="text" class="form-control" value="{{selectedUser.email}}" formControlName="email">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <button type="submit" class="btn btn-primary btn-sm pull-left" style="margin-left:15px; margin-right:15px; margin-top:5px; margin-bottom:5px">Save User</button>
             <button type="button" class="btn btn-primary btn-sm pull-left" style="margin-left:15px; margin-right:15p;  margin-top:5px; margin-bottom:5px" (click)="onCancel()">Cancel</button>
         </div>
     </form>

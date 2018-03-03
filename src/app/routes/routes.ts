@@ -27,7 +27,8 @@ export const routes = [
     { path: 'home/authors/detail/add', component: AddAuthorComponent },
     { path: 'home/users', component: UsersComponent },
     { path: 'home/users/detail', component: UserDetailComponent },
-    { path: 'home/user/detail/add', component: AddUserComponent }
+    { path: 'home/user/detail/add', component: AddUserComponent },
+    { path: 'home/users/add', component: AddUserComponent }
     // { path: '**', component, PageNotFoundComponent }
 ];
 

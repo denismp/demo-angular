@@ -54,7 +54,8 @@ export class AddUserComponent implements OnInit {
 
     ngOnInit(): void {
         this.userForm = new FormGroup({
-            'name': new FormControl(this.selectedUser.name, Validators.required)
+            'name': new FormControl(this.selectedUser.name, Validators.required),
+            'email': new FormControl(this.selectedUser.email, Validators.required)
         });
     }
 
@@ -62,6 +63,9 @@ export class AddUserComponent implements OnInit {
         console.log('onSubmit(): called...');
 
         this.getFormData();
+        this.usersService.createUser(this.selectedUser);
+        // this.store.dispatch({type: 'CREATE_AUTHOR', payload: this.selectedAuthor});
+        this.location.back();
     }
 
     onCancel(): void {
@@ -72,7 +76,8 @@ export class AddUserComponent implements OnInit {
 
     getFormData(): void {
         this.selectedUser.name = this.userForm.get('name').value;
-        this.store.dispatch({ type: 'ADD_USER', payload: this.selectedUser });
+        this.selectedUser.email = this.userForm.get('email').value;
+        this.store.dispatch({ type: 'SELECT_USER', payload: this.selectedUser });
         this.getUser();
     }
 
@@ -81,7 +86,7 @@ export class AddUserComponent implements OnInit {
         this.store.select('selectedUser')
             .subscribe(data => {
                 temp = data;
-                if (temp !== undefined) {
+                if (temp !== undefined && temp !== null ) {
                     this.selectedUser = data;
                 }
             });

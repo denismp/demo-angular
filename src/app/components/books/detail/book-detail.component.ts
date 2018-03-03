@@ -48,7 +48,7 @@ export class BookDetailComponent implements OnInit {
 
     addBook( event: any ): void {
         console.log('addBook(): called...');
-        this.store.dispatch({ type: 'ADD_BOOKS', payload: this.selectedBook });
+        this.store.dispatch({ type: 'SELECT_BOOK', payload: this.selectedBook });
         this.router.navigate(['/home/book/detail/add']);
     }
 }

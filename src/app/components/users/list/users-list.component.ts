@@ -31,7 +31,7 @@ export class UsersListComponent {
         updatedDate: null
     };
 
-    @Input() set author(value: User) {
+    @Input() set user(value: User) {
         if (value) {
             this.originalId = value.id;
         }
@@ -53,8 +53,14 @@ export class UsersListComponent {
 
     routeToUser(author: User): void {
         this.selectedUser = author;
-        console.log('routeToObservation(): called...');
+        console.log('routeToUser(): called...');
         this.store.dispatch({ type: 'SELECT_USER', payload: this.selectedUser });
         this.router.navigate(['/home/users/detail']);
+    }
+
+    addUser( event: any ): void {
+        console.log('addUser(): called...');
+        this.store.dispatch({ type: 'SELECT_USER', payload: this.selectedUser });
+        this.router.navigate(['/home/users/add']);
     }
 }

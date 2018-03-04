@@ -1,5 +1,5 @@
 // export const targetBooksAuthors = (state: any = [], { type, payload }) => {
-export function targetBooksAuthors(state: any = [], { type, payload }) {
+export function targetManageBooksAuthors(state: any = [], { type, payload }) {
     switch (type) {
         case 'ADD_PICK_TRGT_BOOK_AUTHORS':
             return payload;

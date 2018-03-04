@@ -18,8 +18,6 @@ export class PickManageBooksAuthorsService {
     sourceAuthors: Author[];
     targetAuthors: Author[];
 
-    // @Output() targetChanged: EventEmitter<Author[]> = new EventEmitter<Author[]>();
-
     constructor(
         private store: Store<AppStore>,
         private picksStore: Store<ManageBooksAuthorsPickStore>
@@ -42,7 +40,7 @@ export class PickManageBooksAuthorsService {
             .subscribe(data => {
                 this.targetAuthors = data;
             });
-        return null;
+        return this.targetAuthors;
     }
 
     resetTargetAuthors(): void {
@@ -62,7 +60,7 @@ export class PickManageBooksAuthorsService {
             .subscribe(data => {
                 this.sourceAuthors = data;
             });
-        return null;
+        return this.sourceAuthors;
     }
 
     resetSourceAuthors(): void {

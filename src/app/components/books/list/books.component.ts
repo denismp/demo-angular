@@ -5,6 +5,7 @@ import { AppStore } from '../../../common/models/appstore.model';
 import { Book } from '../../../common/models/book.model';
 import { User } from '../../../common/models/user.model';
 import { BooksService } from '../../../common/services/books.service';
+import { AuthorsService } from '../../../common/services/authors.service';
 
 
 @Component({
@@ -16,7 +17,7 @@ import { BooksService } from '../../../common/services/books.service';
         </app-books-list>
     </div>
     `,
-    providers: [BooksService]
+    providers: [BooksService, AuthorsService]
 })
 export class BooksComponent implements OnInit {
     title = 'Demo';
@@ -42,16 +43,16 @@ export class BooksComponent implements OnInit {
 
     }
     ngOnInit(): void {
-        let load = true;
-        this.booksObservable.subscribe(function (books) {
-            console.log(books);
-            if (books !== undefined && books !== null && books.length !== 0) {
-                load = false;
-            }
-        });
-        if (load === true) {
-            this.booksService.loadBooks();
-        }
+        // let load = true;
+        // this.booksObservable.subscribe(function (books) {
+        //     console.log(books);
+        //     if (books !== undefined && books !== null && books.length !== 0) {
+        //         load = false;
+        //     }
+        // });
+        // if (load === true) {
+        //     this.booksService.loadBooks();
+        // }
     }
 
     resetBook() {

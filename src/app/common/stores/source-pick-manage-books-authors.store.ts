@@ -1,5 +1,5 @@
 // export const sourceBooksAuthors = (state: any = [], { type, payload }) => {
-export function sourceBooksAuthors(state: any = [], { type, payload }) {
+export function sourceManageBooksAuthors(state: any = [], { type, payload }) {
     switch (type) {
         case 'ADD_PICK_SRC_BOOK_AUTHORS':
             return payload;

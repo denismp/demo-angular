@@ -22,16 +22,16 @@ import { BooksService } from '../../../common/services/books.service';
     providers: [AuthorsService, PickManageBooksAuthorsService]
 })
 export class BooksAuthorPickListComponent implements OnInit {
-    selectedObservableAuthor: Observable<Author>;
+    // selectedObservableAuthor: Observable<Author>;
     selectedObservableBook: Observable<Book>;
     authorsObservable: Observable<Array<Author>>;
 
     @Output() targetChanged: EventEmitter<Author[]> = new EventEmitter<Author[]>();
     @Output() sourceChanged: EventEmitter<Author[]> = new EventEmitter<Author[]>();
 
-    sourceAuthors: Author[] = [];
+    sourceAuthors: Author[];
 
-    targetAuthors: Author[] = [];
+    targetAuthors: Author[];
 
     authors: Author[];
 
@@ -58,24 +58,24 @@ export class BooksAuthorPickListComponent implements OnInit {
     ) {
         this.selectedObservableBook = store.select(state => state.selectedBook);
         this.selectedObservableBook.subscribe(v => console.log(v));
-        this.selectedObservableAuthor = store.select(state => state.selectedAuthor);
-        this.selectedObservableAuthor.subscribe(v => console.log(v));
+        // this.selectedObservableAuthor = store.select(state => state.selectedAuthor);
+        // this.selectedObservableAuthor.subscribe(v => console.log(v));
         this.authorsObservable = store.select(state => state.authors);
         this.authorsObservable.subscribe(v => console.log(v));
     }
 
     ngOnInit() {
-        this.targetAuthors = [];
-        let load = true;
-        this.authorsObservable.subscribe(function (x) {
-            console.log(x);
-            if (x !== undefined && x !== null) {
-                load = false;
-            }
-        });
-        if (load === true) {
-            this.authorsService.loadAuthors();
-        }
+        // this.targetAuthors = [];
+        // let load = true;
+        // this.authorsObservable.subscribe(function (x) {
+        //     console.log(x);
+        //     if (x !== undefined && x !== null) {
+        //         load = false;
+        //     }
+        // });
+        // if (load === true) {
+        //     this.authorsService.loadAuthors();
+        // }
 
         this.initializeMe();
     }
@@ -100,9 +100,24 @@ export class BooksAuthorPickListComponent implements OnInit {
         this.sourceAuthors = this.pickAuthorsService.getSourceAuthors();
         this.targetAuthors = this.pickAuthorsService.getTargetAuthors();
     }
+    // initializeDefaultPickList(): void {
+    //     this.targetAuthors = [];
+    //     this.authorsService.loadAuthors();
+    //     this.store.select('authors').subscribe(data => {
+    //         this.authors = data;
+    //         if (this.authors !== undefined && this.authors !== null) {
+    //             this.pickAuthorsService.setSourceAuthors(this.authors);
+    //             this.sourceChanged.emit(this.authors);
+    //             this.sourceAuthors = this.pickAuthorsService.getSourceAuthors();
+    //             this.pickAuthorsService.setTargetAuthors( this.selectedBook.authors );
+    //             this.targetChanged.emit(this.selectedBook.authors);
+    //             this.targetAuthors = this.pickAuthorsService.getTargetAuthors();
+    //         }
+    //     });
+    // }
 
     addToTargetSide(authors: Array<Author>): void {
-        this.pickAuthorsService.setSourceAuthors(authors);
+        this.pickAuthorsService.setTargetAuthors(authors);
         this.targetChanged.emit(this.targetAuthors);
         this.targetAuthors = this.pickAuthorsService.getTargetAuthors();
     }
@@ -114,6 +129,7 @@ export class BooksAuthorPickListComponent implements OnInit {
                 this.sourceAuthors = data;
                 if (this.sourceAuthors !== undefined && this.sourceAuthors !== null) {
                     for (const existingItem of existingAuthors) {
+                        console.log('removeFromSourceSide(): existingItem.name=' + existingItem.name);
                         this.sourceAuthors = this.sourceAuthors.filter(item => item.id !== existingItem.id);
                     }
                 }
@@ -132,7 +148,7 @@ export class BooksAuthorPickListComponent implements OnInit {
                         (a: Author, b: Author) => new Date(
                             a.createdDate).getSeconds() > new Date(b.createdDate).getSeconds() ? -1 : 1
                     );
-                    this.pickStore.dispatch({ type: 'ADD_PICK_SRC_AUTHORS', payload: this.sourceAuthors });
+                    this.pickStore.dispatch({ type: 'ADD_PICK_SRC_BOOK_AUTHORS', payload: this.sourceAuthors });
                 }
             });
         console.log('setSourceAuthors(): HERE = ' + this.sourceAuthors);
@@ -145,7 +161,7 @@ export class BooksAuthorPickListComponent implements OnInit {
         this.targetChanged.emit(this.targetAuthors);
         this.pickAuthorsService.setTargetAuthors(this.targetAuthors);
         for (const myTargetAuthor of this.targetAuthors) {
-            this.pickStore.dispatch({ type: 'DELETE_PICK_SRC_AUTHOR', payload: myTargetAuthor });
+            this.pickStore.dispatch({ type: 'DELETE_PICK_SRC_BOOK_AUTHOR', payload: myTargetAuthor });
         }
     }
 
@@ -156,7 +172,7 @@ export class BooksAuthorPickListComponent implements OnInit {
         this.targetChanged.emit(this.sourceAuthors);
         this.pickAuthorsService.setSourceAuthors(this.sourceAuthors);
         for (const mySourceAuthor of this.sourceAuthors) {
-            this.pickStore.dispatch({ type: 'DELETE_PICK_TRGT_AUTHOR', payload: mySourceAuthor });
+            this.pickStore.dispatch({ type: 'DELETE_PICK_TRGT_BOOK_AUTHOR', payload: mySourceAuthor });
         }
     }
 
@@ -165,7 +181,7 @@ export class BooksAuthorPickListComponent implements OnInit {
         this.targetChanged.emit(this.targetAuthors);
         this.pickAuthorsService.setTargetAuthors(this.targetAuthors);
         for (const author of this.targetAuthors) {
-            this.pickStore.dispatch({ type: 'DELETE_PICK_SRC_AUTHOR', payload: author });
+            this.pickStore.dispatch({ type: 'DELETE_PICK_SRC_BOOK_AUTHOR', payload: author });
         }
     }
 
@@ -174,7 +190,7 @@ export class BooksAuthorPickListComponent implements OnInit {
         this.sourceChanged.emit(this.sourceAuthors);
         this.pickAuthorsService.setSourceAuthors(this.sourceAuthors);
         for (const author of this.sourceAuthors) {
-            this.pickStore.dispatch({ type: 'DELETE_PICK_TRGT_AUTHOR', payload: author });
+            this.pickStore.dispatch({ type: 'DELETE_PICK_TRGT_BOOK_AUTHOR', payload: author });
         }
     }
 }

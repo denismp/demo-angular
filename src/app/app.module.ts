@@ -25,9 +25,9 @@ import { authors } from './common/stores/authors.store';
 import { selectedAuthor } from './common/stores/selectedAuthor.store';
 import { users } from './common/stores/users.store';
 import { selectedUser } from './common/stores/selectedUser.store';
-import { sourceBooksAuthors } from './common/stores/source-pick-manage-books-authors.store';
+import { sourceManageBooksAuthors } from './common/stores/source-pick-manage-books-authors.store';
 import { selectedSourceManageBooksAuthor } from './common/stores/selectedSourceManageBooksAuthor.store';
-import { targetBooksAuthors } from './common/stores/target-pick-manage-book-authors.store';
+import { targetManageBooksAuthors } from './common/stores/target-pick-manage-book-authors.store';
 import { selectedTargetManageBooksAuthor } from './common/stores/selectedTargetManageBooksAuthor.store';
 
 import { BooksComponent } from './components/books/list/books.component';
@@ -88,9 +88,9 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
       selectedAuthor,
       users,
       selectedUser,
-      sourceBooksAuthors,
+      sourceManageBooksAuthors,
       selectedSourceManageBooksAuthor,
-      targetBooksAuthors,
+      targetManageBooksAuthors,
       selectedTargetManageBooksAuthor
     }),
     StoreLogMonitorModule

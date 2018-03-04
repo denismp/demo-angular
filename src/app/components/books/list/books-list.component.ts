@@ -10,6 +10,7 @@ import { BooksService } from '../../../common/services/books.service';
 
 import { AppStore } from '../../../common/models/appstore.model';
 import { Store } from '@ngrx/store';
+import { AuthorsService } from '../../../common/services/authors.service';
 
 @Component({
     selector: 'app-books-list',
@@ -59,6 +60,8 @@ export class BooksListComponent {
     constructor(
         private router: Router,
         private store: Store<AppStore>,
+        private booksService: BooksService,
+        private authorsService: AuthorsService
     ) {
         this.observableBooks = store.select(state => state.books);
         this.selectedObservableBook = store.select(state => state.selectedBook);
@@ -66,9 +69,23 @@ export class BooksListComponent {
         this.selectedObservableBook.subscribe(v => console.log(v));
     }
 
+    ngOnInit(): void {
+        let load = true;
+        this.observableBooks.subscribe(function (books) {
+            console.log('BooksListComponent.ngOnInit(): '+books);
+            if (books !== undefined && books !== null && books.length !== 0) {
+                load = false;
+            }
+        });
+        if (load === true) {
+            this.booksService.loadBooks();
+            this.authorsService.loadAuthors();
+        }
+    }
+
     routeToBook(book: Book): void {
         this.selectedBook = book;
-        console.log('routeToObservation(): called...');
+        console.log('routeToBook(): called...');
         this.store.dispatch({ type: 'SELECT_BOOK', payload: this.selectedBook });
         this.router.navigate(['/home/books/detail']);
     }

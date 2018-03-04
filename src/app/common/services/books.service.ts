@@ -28,7 +28,7 @@ export class BooksService {
             .pipe(
                 map(payload => ({ type: 'ADD_BOOKS', payload }))
             )
-            .subscribe(action => this.store.dispatch(action));
+            .subscribe(action => this.store.dispatch(action), err => console.error(err), () => {console.log('loadBooks(): complete.');});
     }
 
     getBook(id: number) {

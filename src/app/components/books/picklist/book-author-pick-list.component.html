@@ -1,8 +1,8 @@
 <p-pickList 
     [source]="sourceAuthors" 
     [target]="targetAuthors" 
-    sourceHeader="Available" 
-    targetHeader="Selected" 
+    sourceHeader="Unassigned Authors" 
+    targetHeader="Assigned Authors" 
     [responsive]="true"
     filterBy="name" 
     dragdrop="true" 
@@ -13,11 +13,11 @@
     [targetStyle]="{'height':'300px'}"
     (onMoveToTarget)="onMoveToTarget($event)"
     (onMoveToSource)="onMoveToSource($event)">
-    
+
     <ng-template let-author pTemplate="author">
         <div class="ui-helper-clearfix">
             <!-- <img src="assets/showcase/images/demo/car/{{car.brand}}.png" style="display:inline-block;margin:2px 0 2px 2px" width="48"> -->
-            <div style="font-size:14px;float:right;margin:15px 5px 0 0">{{author.name}} - {{author.id}} - {{author.createdDate}}</div>
+            <div style="font-size:14px;float:left;margin:15px 5px 0 0">{{author.name}} - {{author.id}} - {{author.createdDate | date}}</div>
         </div>
     </ng-template>
 </p-pickList>

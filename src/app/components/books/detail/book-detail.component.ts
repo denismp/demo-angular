@@ -39,7 +39,8 @@ export class BookDetailComponent implements OnInit {
         private store: Store<AppStore>,
         private pickStore: Store<ManageBooksAuthorsPickStore>,
         private router: Router,
-        private activatedRouter: ActivatedRoute
+        private activatedRouter: ActivatedRoute,
+        private location: Location
     ) {
         this.selectedObservableBook = store.select(state => state.selectedBook);
     }
@@ -79,5 +80,16 @@ export class BookDetailComponent implements OnInit {
         this.selectedBook.title = this.bookForm.get('title').value;
         this.selectedBook.publishDate = this.bookForm.get('publishDate').value;
         this.selectedBook.id = this.bookForm.get('id').value;
+    }
+
+    onSubmit(): void {
+        this.getFormData();
+
+        this.location.back();
+        // this.router.navigate(['/home/books']);
+    }
+
+    onCancel(): void {
+        this.location.back();
     }
 }

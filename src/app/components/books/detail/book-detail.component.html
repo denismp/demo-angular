@@ -4,13 +4,13 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="">Book Id</label>
-                    <input type="text" class="form-control" value="{{selectedBook.id}}" formControlName="id"/>
+                    <input type="text" class="form-control" value="{{selectedBook.id}}" formControlName="id" />
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="">Publish Date</label>
-                    <input type="text" class="form-control" value="{{selectedBook.publishDate | date}}" formControlName="publishDate"/>
+                    <input type="text" class="form-control" value="{{selectedBook.publishDate | date}}" formControlName="publishDate" />
                 </div>
             </div>
             <div class="col-md-4">
@@ -44,8 +44,9 @@
         <!-- <app-authors-list></app-authors-list> -->
 
         <div class="row">
-            <button type="button" class="btn btn-primary btn-sm pull-right" style="margin-right:15px; margin-top:5px; margin-bottom:5px"
-                (click)="addAuthor()">Add Author</button>
+            <button type="submit" class="btn btn-primary btn-sm pull-left" style="margin-right:15px; margin-top:5px; margin-bottom:5px">Save</button>
+            <button type="button" class="btn btn-primary btn-sm pull-left" style="margin-right:15px; margin-top:5px; margin-bottom:5px"
+                (click)="onCancel()">Cancel</button>
         </div>
     </form>
 </div>

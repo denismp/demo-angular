@@ -100,21 +100,6 @@ export class BooksAuthorPickListComponent implements OnInit {
         this.sourceAuthors = this.pickAuthorsService.getSourceAuthors();
         this.targetAuthors = this.pickAuthorsService.getTargetAuthors();
     }
-    // initializeDefaultPickList(): void {
-    //     this.targetAuthors = [];
-    //     this.authorsService.loadAuthors();
-    //     this.store.select('authors').subscribe(data => {
-    //         this.authors = data;
-    //         if (this.authors !== undefined && this.authors !== null) {
-    //             this.pickAuthorsService.setSourceAuthors(this.authors);
-    //             this.sourceChanged.emit(this.authors);
-    //             this.sourceAuthors = this.pickAuthorsService.getSourceAuthors();
-    //             this.pickAuthorsService.setTargetAuthors( this.selectedBook.authors );
-    //             this.targetChanged.emit(this.selectedBook.authors);
-    //             this.targetAuthors = this.pickAuthorsService.getTargetAuthors();
-    //         }
-    //     });
-    // }
 
     addToTargetSide(authors: Array<Author>): void {
         this.pickAuthorsService.setTargetAuthors(authors);

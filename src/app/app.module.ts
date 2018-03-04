@@ -12,7 +12,7 @@ import { RouterModule } from '@angular/router';
 
 import { routes } from './routes/routes';
 
-import { DataTableModule, SharedModule, ButtonModule, TabViewModule } from 'primeng/primeng';
+import { DataTableModule, SharedModule, ButtonModule, TabViewModule, PickListModule } from 'primeng/primeng';
 import { routingModule, appRoutingProviders } from './routes/routes';
 
 import { Ng5BreadcrumbModule } from './components/breadcrumb/breadcrumb.module';
@@ -25,6 +25,10 @@ import { authors } from './common/stores/authors.store';
 import { selectedAuthor } from './common/stores/selectedAuthor.store';
 import { users } from './common/stores/users.store';
 import { selectedUser } from './common/stores/selectedUser.store';
+import { sourceBooksAuthors } from './common/stores/source-pick-manage-books-authors.store';
+import { selectedSourceManageBooksAuthor } from './common/stores/selectedSourceManageBooksAuthor.store';
+import { targetBooksAuthors } from './common/stores/target-pick-manage-book-authors.store';
+import { selectedTargetManageBooksAuthor } from './common/stores/selectedTargetManageBooksAuthor.store';
 
 import { BooksComponent } from './components/books/list/books.component';
 import { BooksListComponent } from './components/books/list/books-list.component';
@@ -38,6 +42,8 @@ import { UsersComponent } from './components/users/list/users.component';
 import { UsersListComponent } from './components/users/list/users-list.component';
 import { UserDetailComponent } from './components/users/detail/user-detail.component';
 import { AddUserComponent } from './components/users/add/add-user.component';
+
+import { BooksAuthorPickListComponent } from './components/books/picklist/book-author-pick-list.component';
 
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -58,7 +64,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     UserDetailComponent,
     AddUserComponent,
     AddAuthorComponent,
-    AddBookComponent
+    AddBookComponent,
+    BooksAuthorPickListComponent
   ],
   imports: [
     BrowserModule,
@@ -68,11 +75,24 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     FormsModule,
     DataTableModule,
     TabViewModule,
+    PickListModule,
     SharedModule,
     ButtonModule,
     Ng5BreadcrumbModule.forRoot(),
     RouterModule.forRoot(routes, { enableTracing: true }),
-    StoreModule.forRoot( {selectedHome, books, selectedBook, authors, selectedAuthor, users, selectedUser }),
+    StoreModule.forRoot({
+      selectedHome,
+      books,
+      selectedBook,
+      authors,
+      selectedAuthor,
+      users,
+      selectedUser,
+      sourceBooksAuthors,
+      selectedSourceManageBooksAuthor,
+      targetBooksAuthors,
+      selectedTargetManageBooksAuthor
+    }),
     StoreLogMonitorModule
   ],
   providers: [],

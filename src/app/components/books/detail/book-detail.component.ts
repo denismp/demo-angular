@@ -1,4 +1,5 @@
 import 'rxjs/add/operator/switchMap';
+import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 import { AppStore } from '../../../common/models/appstore.model';
@@ -27,6 +28,7 @@ export class BookDetailComponent implements OnInit {
     };
 
     selectedObservableBook: Observable<Book>;
+    bookForm: FormGroup;
 
     constructor(
         private booksService: BooksService,
@@ -39,6 +41,11 @@ export class BookDetailComponent implements OnInit {
 
     ngOnInit(): void {
         this.setBook();
+        this.bookForm = new FormGroup({
+            'id': new FormControl({ value: this.selectedBook.id, disabled: true }, Validators.required),
+            'title': new FormControl({ value: this.selectedBook.title, disabled: true }, Validators.required),
+            'publishDate': new FormControl({ value: this.selectedBook.publishDate, disabled: true }, Validators.required)
+        });
     }
 
     setBook(): void {
@@ -46,7 +53,7 @@ export class BookDetailComponent implements OnInit {
             .subscribe(data => { this.selectedBook = data; });
     }
 
-    addBook( event: any ): void {
+    addBook(event: any): void {
         console.log('addBook(): called...');
         this.store.dispatch({ type: 'SELECT_BOOK', payload: this.selectedBook });
         this.router.navigate(['/home/book/detail/add']);

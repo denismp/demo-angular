@@ -10,6 +10,7 @@ import { Book } from '../models/book.model';
 const BASE_URL = 'http://localhost:8090/books';
 const BASE_SINGLE_URL = 'http://localhost:8090/book';
 const BASE_CREATE_URL = 'http://localhost:8090/create/book/';
+const BASE_UPDATE_URL = 'http://localhost:8090/update/book/';
 
 const httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -28,7 +29,7 @@ export class BooksService {
             .pipe(
                 map(payload => ({ type: 'ADD_BOOKS', payload }))
             )
-            .subscribe(action => this.store.dispatch(action), err => console.error(err), () => {console.log('loadBooks(): complete.');});
+            .subscribe(action => this.store.dispatch(action), err => console.error(err), () => { console.log('loadBooks(): complete.'); });
     }
 
     getBook(id: number) {
@@ -36,11 +37,11 @@ export class BooksService {
     }
 
     updateBook(book: Book) {
-        this.http.put(`${BASE_SINGLE_URL}`, JSON.stringify(book))
+        this.http.put(`${BASE_UPDATE_URL}`, JSON.stringify(book), httpOptions)
             .pipe(
                 map(payload => ({ type: 'UPDATE_BOOK', payload }))
             )
-            .subscribe(action => this.store.dispatch(action));
+            .subscribe(action => this.store.dispatch(action), err => console.error(err), () => { console.log('updateBooks(): completed.') });
     }
 
     createBook(authorName: string, book: Book) {

@@ -85,6 +85,8 @@ export class BookDetailComponent implements OnInit {
     onSubmit(): void {
         this.getFormData();
 
+        this.booksService.updateBook(this.selectedBook);
+
         this.location.back();
         // this.router.navigate(['/home/books']);
     }

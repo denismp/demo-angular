@@ -65,7 +65,7 @@ export class UserDetailComponent implements OnInit {
                 this.selectedTargetBooks = data;
             });
         this.pickStore.select('sourceManageUsersBooks').subscribe(data => {
-            this.selectedSourceBooks = data
+            this.selectedSourceBooks = data;
         });
     }
 

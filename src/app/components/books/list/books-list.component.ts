@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
@@ -16,7 +16,7 @@ import { AuthorsService } from '../../../common/services/authors.service';
     selector: 'app-books-list',
     templateUrl: './books-list.component.html'
 })
-export class BooksListComponent {
+export class BooksListComponent implements OnInit{
     @Input() books: Book[];
     @Output() selected = new EventEmitter();
     @Output() deleted = new EventEmitter();
@@ -72,7 +72,7 @@ export class BooksListComponent {
     ngOnInit(): void {
         let load = true;
         this.observableBooks.subscribe(function (books) {
-            console.log('BooksListComponent.ngOnInit(): '+books);
+            console.log('BooksListComponent.ngOnInit(): ' + books);
             if (books !== undefined && books !== null && books.length !== 0) {
                 load = false;
             }

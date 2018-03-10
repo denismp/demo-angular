@@ -43,7 +43,7 @@ export class BooksService {
             .pipe(
                 map(payload => ({ type: 'UPDATE_BOOK', payload }))
             )
-            .subscribe(action => this.store.dispatch(action), err => console.error(err), () => { console.log('updateBooks(): completed.') });
+            .subscribe(action => this.store.dispatch(action), err => console.error(err), () => { console.log('updateBooks(): completed.'); });
     }
 
     createBook(authorName: string, book: Book) {

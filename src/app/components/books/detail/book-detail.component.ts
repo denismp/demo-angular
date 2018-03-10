@@ -72,7 +72,7 @@ export class BookDetailComponent implements OnInit {
                 this.selectedTargetAuthors = data;
             });
         this.pickStore.select('sourceManageBooksAuthors').subscribe(data => {
-            this.selectedSourceAuthors = data
+            this.selectedSourceAuthors = data;
         });
     }
 

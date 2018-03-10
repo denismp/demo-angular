@@ -50,8 +50,8 @@ export class BookDetailComponent implements OnInit {
         this.getAuthors();
         this.bookForm = new FormGroup({
             'id': new FormControl({ value: this.selectedBook.id, disabled: true }, Validators.required),
-            'title': new FormControl({ value: this.selectedBook.title, disabled: true }, Validators.required),
-            'publishDate': new FormControl({ value: this.selectedBook.publishDate, disabled: true }, Validators.required)
+            'title': new FormControl({ value: this.selectedBook.title, disabled: false }, Validators.required),
+            'publishDate': new FormControl({ value: this.selectedBook.publishDate, disabled: false }, Validators.required)
         });
     }
 

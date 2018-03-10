@@ -10,6 +10,8 @@ import { User } from '../models/user.model';
 const BASE_URL = 'http://localhost:8090/users';
 const BASE_SINGLE_URL = 'http://localhost:8090/user/get-by-email';
 const BASE_CREATE_URL = 'http://localhost:8090/create/user';
+const BASE_UPDATE_URL = 'http://localhost:8090/update/user';
+const BASE_DELETE_URL = 'http://localhost:8090/delete/user/';
 
 const httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -36,7 +38,9 @@ export class UsersService {
     }
 
     updateUser( user: User ) {
-        this.http.put(`${BASE_SINGLE_URL}`, JSON.stringify(user), httpOptions)
+        console.log('updateUser(): ' + `${BASE_SINGLE_URL}`);
+        console.log('updateUser(): ' + JSON.stringify(user));
+        this.http.put(`${BASE_UPDATE_URL}`, JSON.stringify(user), httpOptions)
         .pipe(
             map(payload => ({ type: 'UPDATE_USER', payload }))
         )
@@ -52,7 +56,7 @@ export class UsersService {
     }
 
     deleteUser( user: User ) {
-        this.http.delete(`${BASE_SINGLE_URL}/${user.id}`, httpOptions)
+        this.http.delete(`${BASE_DELETE_URL}/${user.id}`, httpOptions)
         .pipe(
             map(payload => ({ type: 'DELETE_USER', payload }))
         )

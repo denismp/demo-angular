@@ -37,6 +37,8 @@ export class BooksService {
     }
 
     updateBook(book: Book) {
+        console.log('updateBook(): ' + `${BASE_UPDATE_URL}`);
+        console.log('updateBook(): ' + JSON.stringify(book));
         this.http.put(`${BASE_UPDATE_URL}`, JSON.stringify(book), httpOptions)
             .pipe(
                 map(payload => ({ type: 'UPDATE_BOOK', payload }))

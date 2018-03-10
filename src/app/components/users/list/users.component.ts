@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { AppStore } from '../../../common/models/appstore.model';
 import { User } from '../../../common/models/user.model';
 import { UsersService } from '../../../common/services/users.service';
+import { BooksService } from '../../../common/services/books.service';
 
 @Component({
     selector: 'app-users',
@@ -14,29 +15,30 @@ import { UsersService } from '../../../common/services/users.service';
         </app-users-list>
     </div>
     `,
-    providers: [UsersService]
+    providers: [UsersService, BooksService]
 })
 export class UsersComponent implements OnInit {
     title = 'Demo';
     usersObservable: Observable<Array<User>>;
     constructor(
         private store: Store<AppStore>,
-        private authorsService: UsersService
+        private usersService: UsersService,
+        private booksService: BooksService
     ) {
         this.usersObservable = store.select(state => state.users);
         this.usersObservable.subscribe(v => console.log(v));
-
     }
     ngOnInit(): void {
         let load = true;
-        this.usersObservable.subscribe(function (authors) {
-            console.log(authors);
-            if (authors !== undefined && authors !== null && authors.length !== 0) {
+        this.usersObservable.subscribe(function (users) {
+            console.log(users);
+            if (users !== undefined && users !== null && users.length !== 0) {
                 load = false;
             }
         });
         if (load === true) {
-            this.authorsService.loadUsers();
+            this.usersService.loadUsers();
+            this.booksService.loadBooks();
         }
     }
 

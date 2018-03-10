@@ -29,6 +29,10 @@ import { sourceManageBooksAuthors } from './common/stores/source-pick-manage-boo
 import { selectedSourceManageBooksAuthor } from './common/stores/selectedSourceManageBooksAuthor.store';
 import { targetManageBooksAuthors } from './common/stores/target-pick-manage-book-authors.store';
 import { selectedTargetManageBooksAuthor } from './common/stores/selectedTargetManageBooksAuthor.store';
+import { targetManageUsersBooks } from './common/stores/target-pick-manage-user-books.store';
+import { sourceManageUsersBooks } from './common/stores/source-pick-manage-user-books.store';
+import { selectedSourceManageUsersBook } from './common/stores/selectedSourceManageUsersBook.store';
+import { selectedTargetManageUsersBook } from './common/stores/selectedTargetManageUsersBook.store';
 
 import { BooksComponent } from './components/books/list/books.component';
 import { BooksListComponent } from './components/books/list/books-list.component';
@@ -44,6 +48,7 @@ import { UserDetailComponent } from './components/users/detail/user-detail.compo
 import { AddUserComponent } from './components/users/add/add-user.component';
 
 import { BooksAuthorPickListComponent } from './components/books/picklist/book-author-pick-list.component';
+import { UserBooksPickListComponent } from './components/users/picklist/user-book-pick-list.component';
 
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -65,7 +70,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     AddUserComponent,
     AddAuthorComponent,
     AddBookComponent,
-    BooksAuthorPickListComponent
+    BooksAuthorPickListComponent,
+    UserBooksPickListComponent
   ],
   imports: [
     BrowserModule,
@@ -91,7 +97,11 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
       sourceManageBooksAuthors,
       selectedSourceManageBooksAuthor,
       targetManageBooksAuthors,
-      selectedTargetManageBooksAuthor
+      selectedTargetManageBooksAuthor,
+      targetManageUsersBooks,
+      sourceManageUsersBooks,
+      selectedTargetManageUsersBook,
+      selectedSourceManageUsersBook
     }),
     StoreLogMonitorModule
   ],

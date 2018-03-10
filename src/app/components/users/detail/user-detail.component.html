@@ -1,31 +1,41 @@
 <div class="container">
-    <div class="row">
-        <div class="col-md-4">
-            <div class="form-group">
-                <label for="">Book Id</label>
-                <input type="text" class="form-control" disabled=true value="{{selectedUser.id}}"/>
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="">Book Id</label>
+                    <input type="text" class="form-control" value="{{selectedUser.id}}" formControlName="id" />
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="">Email</label>
+                    <input type="text" class="form-control" value="{{selectedUser.email}}" formControlName="email" />
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="">Name</label>
+                    <input type="text" class="form-control" value="{{selectedUser.name}}" formControlName="name" />
+                </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="form-group">
-                <label for="">Publish Date</label>
-                <input type="text" class="form-control" disabled=true value="{{selectedUser.email}}"/>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="form-group">
-                <label for="">Title</label>
-                <input type="text" class="form-control" disabled=true value="{{selectedUser.name}}"/>
-            </div>
-        </div>
-    </div>
 
-    <!-- <app-authors-list></app-authors-list> -->
+        <!-- <app-authors-list></app-authors-list> -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <app-user-books-pick-list (onTargetChanged)="setTargetBooks($event)" (onSourceChanged)="setSourceBooks($event)"></app-user-books-pick-list>
+                </div>
+            </div>
+        </div>
 
-    <div class="row">
-        <button type="button" class="btn btn-primary btn-sm pull-right" style="margin-right:15px; margin-top:5px; margin-bottom:5px"
-            (click)="addUser()">Add User</button>
-    </div>
+        <div class="row">
+            <button type="submit" class="btn btn-primary btn-sm pull-left" style="margin-right:15px; margin-top:5px; margin-bottom:5px">Save</button>
+            <button type="button" class="btn btn-primary btn-sm pull-left" style="margin-right:15px; margin-top:5px; margin-bottom:5px"
+                (click)="onCancel()">Cancel</button>
+        </div>
+    </form>
 </div>
 
 <!-- resetUser() {
